@@ -1,12 +1,16 @@
 
-clientes={'Cliente':'João','CPF':'222','Data de nascimento':'05/06/1920','Endereço':'Rua de são paulo,220','Agencia':'0001'}
+clientes = {'Cliente':'João',
+            'CPF':'222',
+            'Data de nascimento':'05/06/1920',
+            'Endereço':'Rua de são paulo,220',
+            'Agencia':'0001'}
 
 class Verificar_cliente:
     def __init__(self):
         pass
     def login(self):
-        cliente=input('Insira seu nome: ')
-        cpf=str(input('Insira seu CPF: '))
+        cliente = input('Insira seu nome: ')
+        cpf = str(input('Insira seu CPF: '))
         if cliente not in clientes['Cliente'] or cpf not in clientes['CPF']:
             tela_login="""\n=================Tela de cadastro===============
                 \nOlá usuario, verificamos em nosso sistema que você não possui cadastro.
@@ -41,12 +45,12 @@ class Menu:
     def __init__(self):
         pass
     def logado(self):
-        Saldo=1500
-        LIMITE_SAQUE=3
-        numero_saque=0
-        extrato=''
+        Saldo = 1500
+        LIMITE_SAQUE = 3
+        numero_saque = 0
+        extrato = ''
         while True:
-            menu="""
+            menu = """
         Menu Bancario
         ==========================
         [0]-Saque
@@ -60,46 +64,46 @@ class Menu:
             print(menu)
             
             resposta=input('Insira a operação desejada:')
-            if int(resposta)==0:
-                if Saldo<1:
+            if int(resposta) == 0:
+                if Saldo < 1:
                     print('Saldo insufisciente')
                 else:
-                    valor=float(input('Insira o valor para saque: '))
-                    Saldo_conta=Saldo-valor
-                    if float(valor)>float(Saldo):
+                    valor = float(input('Insira o valor para saque: '))
+                    Saldo_conta = Saldo-valor
+                    if float(valor) > float(Saldo):
                         print('Valor indisponivel para saque!')
                         
-                    elif numero_saque>=LIMITE_SAQUE:
+                    elif numero_saque >= LIMITE_SAQUE:
                         print('Limite excedido')
                         break
                     else:
-                        calculo=Saldo_conta
-                        reais=float(calculo)
+                        calculo = Saldo_conta
+                        reais = float(calculo)
                         print(f'Saldo atual: R$ {reais:.2f}')
                         print(f'Valor sacado de: R$ {valor:.2f}')
                     
-                    if valor>0:
-                        numero_saque+=1
-                        Saldo=Saldo_conta
-                        extrato+=f'{valor:.2f}\n'
+                    if valor > 0:
+                        numero_saque += 1
+                        Saldo = Saldo_conta
+                        extrato += f'{valor:.2f}\n'
             
-            elif int(resposta)==1:
+            elif int(resposta) == 1:
                 print(f'R$ {Saldo:.2f}')
             
             
-            elif int(resposta)==2:
+            elif int(resposta) == 2:
                 print("\n===========EXTRATO DE CONTA===========")
                 print("\nNão foram realizadas movimentações nesta conta" if not extrato else extrato)
                 print("\n======================================")
             
-            elif int(resposta)==5:
-                deposito=float(input('Insira o valor a ser depositado: R$ '))
-                valor_atual=Saldo+deposito
+            elif int(resposta) == 5:
+                deposito = float(input('Insira o valor a ser depositado: R$ '))
+                valor_atual = Saldo + deposito
                 print("\n============Depositado com sucesso============")
                 print(f'\nSaldo atual: R${valor_atual:.2f}')
                 print("\n========================")
 
-            elif int(resposta)==4:
+            elif int(resposta) == 4:
                 break
 
             else:
